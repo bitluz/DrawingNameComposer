@@ -1,0 +1,68 @@
+﻿<UserControl
+    x:Class="DrawingNameComposer.CustomControls.StatusMessagePopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:DrawingNameComposer.CustomControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="root"
+    d:DesignHeight="50"
+    d:DesignWidth="200"
+    mc:Ignorable="d">
+    <Border
+        Padding="10"
+        Background="{StaticResource Foreground}"
+        CornerRadius="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                VerticalAlignment="Center"
+                Foreground="{StaticResource Background}"
+                Text="{Binding Message, ElementName=root}"
+                TextWrapping="Wrap" />
+
+            <Button
+                x:Name="okay_btn"
+                Padding="10,5"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Click="Button_Click"
+                Content="Okay"
+                Cursor="Hand"
+                Foreground="{StaticResource Background}">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        Padding="10,2"
+                                        Background="{StaticResource Primary}"
+                                        BorderBrush="{StaticResource Accent}"
+                                        BorderThickness="1"
+                                        CornerRadius="10">
+                                        <ContentPresenter />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <ProgressBar
+                x:Name="ProgressBar"
+                Grid.Row="2"
+                Height="5"
+                VerticalAlignment="Bottom"
+                Background="Transparent"
+                BorderThickness="0"
+                Foreground="{StaticResource Primary}"
+                Maximum="100"
+                SmallChange="1" />
+        </Grid>
+    </Border>
+</UserControl>
